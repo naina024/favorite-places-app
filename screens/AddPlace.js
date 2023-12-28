@@ -2,16 +2,13 @@
 import {View, StyleSheet} from 'react-native';
 import PlaceForm from '../components/Places/PlaceForm';
 import { SCREENS } from '../constants';
+import { insertPlace } from '../database';
 
-function AddPlace({route, navigation}){
-    if (route && route.params){
-        const {pickedLatitude, pickedLongitude} = route.params
-    }
+function AddPlace({navigation}){
 
-    function addPlaceHandler(place){
-        navigation.navigate(SCREENS.ALL_PLACES, {
-            place
-        })
+    async function addPlaceHandler(place){
+        await insertPlace(place);
+        navigation.navigate(SCREENS.ALL_PLACES);
     }
 
     return (

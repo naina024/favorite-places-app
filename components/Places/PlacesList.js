@@ -1,12 +1,18 @@
 
 import {View, FlatList, Text, StyleSheet} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Colors } from '../../styles';
 import PlaceItem from './PlaceItem';
+import { SCREENS } from '../../constants';
 
 function PlacesList({places}){
 
-    function onSelect(){
+    const navigation = useNavigation();
 
+    function selectPlaceHandler(id){
+        navigation.navigate(SCREENS.PLACE_DETAILS, {
+            placeId: id
+        })
     }
 
     if (!places || !places.length){
@@ -22,7 +28,7 @@ function PlacesList({places}){
             style={styles.list}
             data={places}
             keyExtractor={(item) => item.id}
-            renderItem={({item}) => <PlaceItem place={item} onSelect={onSelect}/>}
+            renderItem={({item}) => <PlaceItem place={item} onSelect={selectPlaceHandler}/>}
         />
     )
 }

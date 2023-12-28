@@ -1,12 +1,12 @@
 
-import {View, Image, Text, StyleSheet} from 'react-native';
+import {Pressable, View, Image, Text, StyleSheet} from 'react-native';
 import { Colors } from '../../styles';
 
 function PlaceItem({place, onSelect}){
     return (
         <Pressable 
             style={({pressed}) => [styles.rootContainer, pressed && styles.pressed]}
-            onPress={onSelect}
+            onPress={onSelect.bind(this, place.id)}
         >
             <Image style={styles.image} source={{uri: place.imageUri}}/>
             <View style={styles.info}>
@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
 
     image: {
         flex: 1,
+        height: '100%',
+        width: '100%',
         borderBottomLeftRadius: 4,
         borderTopLeftRadius: 4,
     },

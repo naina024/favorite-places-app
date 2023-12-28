@@ -40,7 +40,7 @@ function LocationPicker({onPickLocaton}){
     }, [pickedLocation]);
 
     async function verifyPermissions(){
-        if (locationPerrmissionInfo.status === PermissionStatus.UNDETERMINED){
+        if (locationPermissionInfo.status === PermissionStatus.UNDETERMINED){
             const permissionResponse = await requestPermission();
             return permissionResponse.granted;
         } else {
@@ -81,19 +81,17 @@ function LocationPicker({onPickLocaton}){
               uri: getMapPreview(
                 pickedLocation.latitude,
                 pickedLocation.longitude
-              ),
+              )
             }}
           />
         );
     }
 
     return (
-        <View style={styles.rootContainer}>
-            <View style={styles.locationPreview}>
-                {locationPreview}
-            </View>
+        <View>
+            <View style={styles.locationPreview}>{locationPreview}</View>
             <View style={styles.buttonsContainer}>
-                {/* <OutlinedButton icon='location' onPress={getLocationHandler}>Locate User</OutlinedButton> */}
+                <OutlinedButton icon='location' onPress={getLocationHandler}>Locate User</OutlinedButton>
                 <OutlinedButton icon='map' onPress={pickOnMapHandler}>Pick on Map</OutlinedButton>
             </View>
             
@@ -102,9 +100,6 @@ function LocationPicker({onPickLocaton}){
 }
 
 const styles = StyleSheet.create({
-    rootContainer: {
-        flex: 1,
-    },
 
     locationPreview: {
         width: '100%',

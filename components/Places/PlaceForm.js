@@ -1,5 +1,5 @@
 
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import {View, Text, ScrollView, TextInput, StyleSheet} from 'react-native';
 import { Place } from '../../models/place';
 import { Colors } from '../../styles';
