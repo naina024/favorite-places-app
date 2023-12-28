@@ -45,7 +45,7 @@ function ImagePicker({onTakeImage}){
     let imagePreview = <Text>No image taken yet.</Text>
 
     if(pickedImage){
-        imagePreview = <Image style={styles.images} source={{uri: pickedImage}}/>
+        imagePreview = <Image style={styles.image} source={{uri: pickedImage}}/>
     }
 
     return (

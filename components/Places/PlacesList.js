@@ -18,13 +18,12 @@ function PlacesList({places}){
     }
 
     return (
-        <View style={styles.rootContainer}>
-            <FlatList
-                data={places}
-                keyExtractor={(item) => item.id}
-                renderItem={({item}) => <PlaceItem place={item} onSelect={onSelect}/>}
-            />
-        </View>
+        <FlatList
+            style={styles.list}
+            data={places}
+            keyExtractor={(item) => item.id}
+            renderItem={({item}) => <PlaceItem place={item} onSelect={onSelect}/>}
+        />
     )
 }
 
@@ -40,8 +39,8 @@ const styles = StyleSheet.create({
         color: Colors.primary200,
     },
 
-    rootContainer: {
-
+    list: {
+        margin: 24,
     }
 })
 
