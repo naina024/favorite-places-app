@@ -6,7 +6,7 @@ import { Colors } from '../../styles';
 
 import OutlinedButton from '../UI/OutlinedButton';
 
-function ImagePicker(){
+function ImagePicker({onTakeImage}){
 
     const [cameraPermissionInfo, requestPermission] = useCameraPermissions(); // Required for ios permissions
     const [pickedImage, setPickedImage] = useState();
@@ -39,6 +39,7 @@ function ImagePicker(){
         });
 
         setPickedImage(photo.assets[0].uri);
+        onTakeImage(photo.assets[0].uri);
     }
 
     let imagePreview = <Text>No image taken yet.</Text>
@@ -52,7 +53,7 @@ function ImagePicker(){
             <View style={styles.imagePreview}>
                 {imagePreview}
             </View>
-            <OutlinedButton icon='camera'  onPress={takePhotoHandler}>Take Photo</OutlinedButton>
+            <OutlinedButton icon='camera' onPress={takePhotoHandler}>Take Photo</OutlinedButton>
         </View>
     )
 }
